@@ -8,6 +8,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  /* ================================================================
+     THEME TOKENS
+     Change colors/fonts for the whole page from right here.
+     --brass/--teal/--stone/--rose are the 4 category accent colors
+     used to tint each project tile (see [data-cat] rules below).
+     ================================================================ */
   :root{
     --ink:#15171c;
     --panel:#1d2027;
@@ -163,7 +169,13 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* ---------- masonry grid ---------- */
+  /* ---------- masonry grid ----------
+     grid-auto-rows is a small 8px "unit". Each .tile is stretched
+     across N of these units via inline "grid-row-end: span N", which
+     is calculated in JS (see resizeGridItem()). This is what lets
+     tiles of different heights sit in a true masonry wall instead of
+     a uniform equal-height card grid.
+  */
   .grid{
     display:grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -171,6 +183,8 @@
     gap:28px;
   }
 
+  /* Entrance animation: each tile fades/rises in once on load or on
+     filter change. The stagger delay (--d) is set per-tile in JS. */
   .tile{
     position:relative;
     background:var(--panel);
@@ -460,6 +474,17 @@
 
 <script>
 (function(){
+  /* ================================================================
+     PROJECT DATA
+     This is the ONLY place you need to edit to change the gallery's
+     content — add, remove, or edit objects here and the grid,
+     filters, and lightbox all update automatically.
+
+     category : must be one of "branding" | "web" | "photo" | "motion"
+                (controls both the filter button and the tile color)
+     mono     : 1-2 letters shown as the tile's placeholder artwork
+     ar       : aspect-ratio of the artwork box, e.g. "4/3", "1/1"
+     ================================================================ */
   const projects = [
     { id:1, client:"Solstice Coffee Roasters", type:"Brand identity", category:"branding", label:"Branding", mono:"SC", year:"2024", ar:"3/4",
       desc:"A mark built around the moment light hits the roaster — warm gradients standing in for a name most regulars just say in one syllable." },
@@ -492,6 +517,9 @@
   let currentFilter = 'all';
   let visibleList = [];
 
+  // Builds the HTML string for one gallery tile from a project object.
+  // "i" is the tile's position in the current filtered list, used
+  // to stagger each tile's entrance animation (--d).
   function tileMarkup(p, i){
     return `
       <article class="tile" data-cat="${p.category}" data-id="${p.id}" style="--d:${(i*0.05).toFixed(2)}s" tabindex="0" role="button" aria-label="View ${p.client} — ${p.type}">
@@ -510,13 +538,20 @@
     `;
   }
 
+  // Rebuilds the entire grid for the given filter ("all", "branding",
+  // "web", "photo", or "motion"). Called on page load and every time
+  // a filter tab is clicked — rebuilding from scratch is what lets
+  // the entrance animation replay each time the filter changes.
   function renderGrid(filter){
     currentFilter = filter;
     const list = filter === 'all' ? projects : projects.filter(p => p.category === filter);
-    visibleList = list;
+    visibleList = list; // used by the lightbox for prev/next navigation
+
     grid.innerHTML = list.map(tileMarkup).join('');
     countEl.textContent = list.length + (list.length === 1 ? ' project' : ' projects');
 
+    // Click OR keyboard (Enter/Space) opens the lightbox — keeps the
+    // gallery usable without a mouse.
     grid.querySelectorAll('.tile').forEach(tile => {
       tile.addEventListener('click', () => openLightbox(Number(tile.dataset.id)));
       tile.addEventListener('keydown', e => {
@@ -527,9 +562,16 @@
       });
     });
 
+    // Wait two animation frames so the browser has actually laid out
+    // the new tiles before we measure their heights for the masonry.
     requestAnimationFrame(() => requestAnimationFrame(resizeAllGridItems));
   }
 
+  // THE MASONRY TRICK:
+  // Measures how tall one tile's real content is, then converts that
+  // height into a number of 8px grid rows and tells the tile to span
+  // that many rows. Repeat for every tile and the grid naturally
+  // packs tiles of different heights without gaps.
   function resizeGridItem(item){
     const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
     const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('gap')) || 28;
@@ -542,11 +584,18 @@
     grid.querySelectorAll('.tile').forEach(resizeGridItem);
   }
 
+  // Recalculate the masonry layout when the window is resized
+  // (tile widths change → wrapped text height changes → row spans
+  // need updating). Debounced by 120ms so it doesn't run on every
+  // pixel while the user is dragging the window edge.
   window.addEventListener('resize', () => {
     clearTimeout(window.__rzT);
     window.__rzT = setTimeout(resizeAllGridItems, 120);
   });
 
+  // Wire up the 5 filter tabs (All work / Branding / Web design /
+  // Photography / Motion). data-filter on each button matches a
+  // "category" value in the projects array above.
   document.querySelectorAll('.filters button').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
@@ -570,6 +619,10 @@
   const lbPrev = document.getElementById('lbPrev');
   const lbNext = document.getElementById('lbNext');
 
+  // activeIndex tracks position within visibleList (the CURRENTLY
+  // filtered set) so prev/next only cycle through what's on screen.
+  // lastFocused remembers which tile was clicked so keyboard focus
+  // returns to it when the lightbox closes (accessibility).
   let activeIndex = -1;
   let lastFocused = null;
 
@@ -589,6 +642,8 @@
     lbDot.style.background = dotColor[p.category];
   }
 
+  // Opens the lightbox for a given project id, remembers what had
+  // focus before, and starts listening for keyboard shortcuts.
   function openLightbox(id){
     activeIndex = visibleList.findIndex(p => p.id === id);
     if(activeIndex === -1) return;
@@ -601,16 +656,21 @@
 
   function closeLightbox(){
     lightbox.classList.remove('open');
-    document.removeEventListener('keydown', onKey);
-    if(lastFocused) lastFocused.focus();
+    document.removeEventListener('keydown', onKey); // stop listening once closed
+    if(lastFocused) lastFocused.focus(); // return keyboard focus to the tile
   }
 
+  // Moves to the next (dir=1) or previous (dir=-1) project, wrapping
+  // around at both ends so Next on the last item loops to the first.
   function step(dir){
     if(visibleList.length === 0) return;
     activeIndex = (activeIndex + dir + visibleList.length) % visibleList.length;
     fillLightbox(visibleList[activeIndex]);
   }
 
+  // Keyboard shortcuts while the lightbox is open: Esc closes it,
+  // ← / → move between projects. Only attached while open (see
+  // openLightbox/closeLightbox) so it doesn't interfere elsewhere.
   function onKey(e){
     if(e.key === 'Escape') closeLightbox();
     if(e.key === 'ArrowRight') step(1);
