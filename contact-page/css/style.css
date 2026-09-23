@@ -1,0 +1,377 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    overflow-x: hidden;
+    padding-top: 78px;
+    color: #5f6061;
+}
+
+.container-fluid {
+    max-width: 1430px;
+    margin: auto;
+}
+
+.topbar-brand-row {
+    padding-bottom: 30px;
+}
+
+.topbar-brand-name {
+    color: #98999a;
+    width: 300px;
+    height: 100px;
+    border: 1px solid #98999a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topbar-nav-col {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    width: 101px;
+    height: 52px;
+    border: 1px solid transparent;
+    text-align: center;
+    margin-left: 25px;
+    margin-right: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-light .navbar-nav .nav-item.active .nav-link {
+    border: 1px solid #98999a;
+    color: #98999a;
+}
+
+button {
+    transition: all 0.3s ease;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.hero-row {
+    padding-bottom: 30px;
+}
+
+.hero-welcome-row {
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+.hero-page-cols-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero-welcome-box {
+    height: 440px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-bg-gradient {
+    background: linear-gradient(135deg, #a0c0c0 0%, #669999 100%);
+}
+
+.hero-page-col-left {
+    width: 28.56%;
+    max-width: 400px;
+}
+
+.hero-welcome-text {
+    max-width: 320px;
+    width: 100%;
+    padding: 15px 25px 15px 15px;
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    text-align: right;
+}
+
+p {
+    line-height: 2;
+}
+
+.hero-image {
+    width: 70%;
+    margin-left: auto;
+    margin-right: 0;
+
+}
+
+.hero-image-parallax {
+    position: relative;
+    min-height: 440px;
+    overflow: hidden;
+}
+
+.hero-image-parallax img {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 160%;
+    object-fit: cover;
+    transform: translateY(-50%);
+    will-change: transform;
+}
+
+.contact-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding-top: 65px;
+}
+
+.contact-info {
+    padding: 0 60px;
+}
+
+.contact-info h2,
+.form-area h2 {
+    color: #669999;
+    margin: 0 0 30px;
+    font-size: 1.85rem;
+    font-weight: 400;
+}
+
+.address {
+    margin-bottom: 95px;
+}
+
+.address p {
+    line-height: 1.9;
+}
+
+.contact-info img {
+    display: block;
+    max-width: 100%;
+}
+
+.form-area {
+    padding: 0 90px 40px;
+}
+
+#contactForm {
+    max-width: 524px;
+    padding: 35px 40px;
+}
+
+#contactForm input[type="text"],
+#contactForm input[type="email"],
+#contactForm select,
+#contactForm textarea {
+    width: 100%;
+    margin-bottom: 42px;
+    padding: 14px 0;
+    border: 0;
+    border-bottom: 1px solid #bfcfcf;
+    outline: none;
+    color: #669999;
+    font: inherit;
+    background: transparent;
+}
+
+#contactForm select {
+    cursor: pointer;
+}
+
+#contactForm textarea {
+    padding: 15px 20px;
+    border: 1px solid #669999;
+    resize: vertical;
+}
+
+#contactForm input::placeholder,
+#contactForm textarea::placeholder {
+    color: #669999;
+    opacity: 1;
+}
+
+.choices {
+    display: flex;
+    gap: 35px;
+    margin: -10px 0 40px;
+    color: #669999;
+}
+
+.choices input {
+    accent-color: #669999;
+    margin-right: 8px;
+}
+
+.file-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 45px;
+}
+
+.file-row #fileName {
+    margin: 0;
+}
+
+.browse-btn,
+.submit-btn {
+    cursor: pointer;
+    border: 1px solid #669999;
+    background: transparent;
+    color: #669999;
+    font: inherit;
+    padding: 11px 20px;
+}
+
+.submit-btn {
+    min-width: 120px;
+    background: #669999;
+    color: white;
+}
+
+.subscribe-section {
+    display: flex;
+    justify-content: flex-end;
+    padding: 30px 0 0;
+}
+
+.subscribe-box {
+    width: 66.666%;
+    display: flex;
+    gap: 35px;
+    padding: 60px 90px;
+    color: #fff;
+    background: #669999;
+}
+
+.rss {
+    font-size: 4rem;
+    line-height: 1;
+}
+
+.subscribe-box h3 {
+    margin: 0 0 20px;
+    font-size: 1.55rem;
+    font-weight: 400;
+}
+
+.subscribe-box p {
+    max-width: 600px;
+    line-height: 1.8;
+}
+
+.subscribe-form {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.subscribe-form input {
+    width: min(350px, 100%);
+    padding: 12px;
+    border: 0;
+    font: inherit;
+}
+
+.subscribe-form button {
+    padding: 12px 24px;
+    border: 0;
+    color: #fff;
+    background: #a0c0c0;
+    cursor: pointer;
+    font: inherit;
+}
+
+footer {
+    padding: 50px 70px;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 767px) {
+    .topbar {
+        min-height: auto;
+        flex-wrap: wrap;
+    }
+
+    .topbar h1 {
+        width: auto;
+        padding: 25px;
+        font-size: 1.5rem;
+    }
+
+    .menu-btn {
+        display: block;
+        margin: 18px;
+        border: 0;
+        background: transparent;
+        font-size: 1.7rem;
+        cursor: pointer;
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    nav.show {
+        display: flex;
+    }
+
+    nav a {
+        min-width: auto;
+        padding: 16px;
+        border-top: 1px solid #eee;
+    }
+
+    nav a:hover,
+    nav a.active {
+        padding-top: 16px;
+        border-top: 1px solid #eee;
+        border-left: 5px solid #669999;
+    }
+
+    .hero,
+    .contact-section {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-image {
+        min-height: 260px;
+        background-attachment: scroll;
+    }
+
+    .hero-text,
+    .contact-info,
+    .form-area {
+        padding: 40px 20px;
+    }
+
+    #contactForm {
+        padding: 20px 0;
+    }
+
+    .address {
+        margin-bottom: 50px;
+    }
+
+    .subscribe-box {
+        width: 100%;
+        padding: 40px 20px;
+    }
+
+    footer {
+        padding: 35px 20px;
+    }
+}
