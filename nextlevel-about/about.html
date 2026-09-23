@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Next Level Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="site-header">
+  <a href="index.html" class="brand">Next Level</a>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="is-active">About</a>
+    <a href="portfolio.html">Work</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-blob" aria-hidden="true">
+      <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <path class="blob-path" fill="url(#blobGradient)">
+          <animate attributeName="d" dur="14s" repeatCount="indefinite"
+            values="
+              M421,313Q437,376,381,412Q325,448,266,436Q207,424,157,388Q107,352,120,289Q133,226,175,180Q217,134,278,132Q339,130,383,171Q427,212,421,313Z;
+              M427,296Q423,362,367,401Q311,440,250,428Q189,416,148,371Q107,326,124,266Q141,206,190,169Q239,132,296,143Q353,154,391,197Q429,240,427,296Z;
+              M421,313Q437,376,381,412Q325,448,266,436Q207,424,157,388Q107,352,120,289Q133,226,175,180Q217,134,278,132Q339,130,383,171Q427,212,421,313Z
+            "/>
+        </path>
+        <defs>
+          <linearGradient id="blobGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7C6FF0"/>
+            <stop offset="100%" stop-color="#25D9C4"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <p class="hero-eyebrow">About the studio</p>
+    <h1 class="hero-title">
+      We're a small studio that <em>obsesses</em> over the details other agencies skip.
+    </h1>
+    <p class="hero-lede">
+      Next Level is a nine-person design &amp; development studio working with founders and
+      product teams who want their digital presence to feel as considered as the product itself.
+    </p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number" data-count="7">0</span>
+        <span class="stat-label">years running</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number" data-count="94">0</span>
+        <span class="stat-label">projects shipped</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number" data-count="31">0</span>
+        <span class="stat-label">clients returning</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story reveal">
+    <div class="story-label">
+      <span class="story-index">01</span>
+      <span>How we started</span>
+    </div>
+    <div class="story-body">
+      <p class="story-lead">
+        Next Level began in 2018 in a rented back room above a print shop, with two laptops
+        and a client who took a chance on us before we had a portfolio worth showing.
+      </p>
+      <p>
+        We'd both spent years inside larger agencies watching good ideas get sanded down into
+        safe ones. So we started small on purpose — small enough that every project still gets
+        the two of us in the room, and every line of code gets read by someone who cares about it.
+      </p>
+      <p>
+        That constraint became the studio's shape. We still take on a limited number of projects
+        each year, not because we can't grow, but because the work gets worse the moment it stops
+        fitting on one whiteboard.
+      </p>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="approach reveal">
+    <div class="section-heading">
+      <span class="story-index">02</span>
+      <h2>How we work</h2>
+    </div>
+    <div class="approach-grid">
+      <article class="approach-card">
+        <h3>Design in the browser, early</h3>
+        <p>Static mockups hide how something actually behaves. We move into real code within the
+        first week, so decisions get tested against real motion, real type, real edge cases.</p>
+      </article>
+      <article class="approach-card">
+        <h3>One team, not a handoff chain</h3>
+        <p>The person who designs your interface is often the person who builds it. Fewer handoffs
+        means fewer details get lost in translation between disciplines.</p>
+      </article>
+      <article class="approach-card">
+        <h3>Slow starts, fast builds</h3>
+        <p>We spend longer than most studios agreeing on the problem before we touch a design tool.
+        Once direction is set, we build quickly because we're not second-guessing the brief.</p>
+      </article>
+      <article class="approach-card">
+        <h3>We say no often</h3>
+        <p>If a request doesn't serve the person using the product, we'll say so — even if it's an
+        easy yes. Clients come back because the studio pushes back.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline reveal">
+    <div class="section-heading">
+      <span class="story-index">03</span>
+      <h2>Where we've been</h2>
+    </div>
+    <ol class="timeline-list">
+      <li class="timeline-item">
+        <span class="timeline-year">2018</span>
+        <div class="timeline-content">
+          <h3>Studio founded</h3>
+          <p>Started as a two-person partnership taking on brand and web projects for local
+          businesses around the city.</p>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <span class="timeline-year">2020</span>
+        <div class="timeline-content">
+          <h3>First product client</h3>
+          <p>Moved from marketing sites into full product design, shipping our first SaaS
+          dashboard end to end.</p>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <span class="timeline-year">2022</span>
+        <div class="timeline-content">
+          <h3>Studio space &amp; a real team</h3>
+          <p>Outgrew the back room, leased our current studio, and brought on our first four
+          full-time teammates.</p>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <span class="timeline-year">2024</span>
+        <div class="timeline-content">
+          <h3>Nine people, one waitlist</h3>
+          <p>Settled at a team of nine and started keeping a waitlist rather than stretching
+          thinner to take on every project that comes in.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team reveal">
+    <div class="section-heading">
+      <span class="story-index">04</span>
+      <h2>Who's in the room</h2>
+    </div>
+    <div class="team-grid">
+      <article class="team-card">
+        <div class="team-avatar" style="--a:#7C6FF0; --b:#4B3FCC;">AK</div>
+        <h3>Amara Khan</h3>
+        <p class="team-role">Co-founder, Design</p>
+      </article>
+      <article class="team-card">
+        <div class="team-avatar" style="--a:#25D9C4; --b:#0FA895;">DR</div>
+        <h3>Daniel Reyes</h3>
+        <p class="team-role">Co-founder, Engineering</p>
+      </article>
+      <article class="team-card">
+        <div class="team-avatar" style="--a:#F0A15C; --b:#CC7A32;">LP</div>
+        <h3>Lena Petrov</h3>
+        <p class="team-role">Senior Product Designer</p>
+      </article>
+      <article class="team-card">
+        <div class="team-avatar" style="--a:#F0618C; --b:#C93E68;">MO</div>
+        <h3>Malik Osei</h3>
+        <p class="team-role">Front-End Engineer</p>
+      </article>
+      <article class="team-card">
+        <div class="team-avatar" style="--a:#7C6FF0; --b:#25D9C4;">SC</div>
+        <h3>Sofia Conti</h3>
+        <p class="team-role">Brand &amp; Motion Designer</p>
+      </article>
+      <article class="team-card">
+        <div class="team-avatar" style="--a:#25D9C4; --b:#7C6FF0;">JB</div>
+        <h3>Jonas Berg</h3>
+        <p class="team-role">Back-End Engineer</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta reveal">
+    <h2>Have a project that needs the details right?</h2>
+    <p>We take on a small number of new studios each quarter. Tell us where you're stuck.</p>
+    <a href="contact.html" class="cta-button">Start a conversation</a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <span>&copy; 2026 Next Level Studio.</span>
+  <span>Built with care, above a print shop.</span>
+</footer>
+
+<script src="js/about.js"></script>
+</body>
+</html>
